@@ -1,0 +1,23 @@
+name: Python CI - Hello World
+
+on:
+  push:
+    branches: [ main ]       # Triggers workflow on pushes to main
+  pull_request:
+    branches: [ main ]       # Triggers workflow on PRs targeting main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest   # Use latest Ubuntu runner
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4  # Check out the repo
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'   # Set Python version
+
+    - name: Run hello.py
+      run: python hello.py        # Run your script
